@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Filter from './Components/Filter';
+import Aggregate from './Components/Aggregate';
+import Playlist from './Components/Playlist';
 
 class App extends Component {
   render() {
+    // const name = 'Wakanda';
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <h1>Kandafy</h1>
+        <h4>Music for Wakandans</h4>
+        <Aggregate />
+        <Aggregate />
+        <Filter />
+        <Playlist />
       </div>
     );
   }
