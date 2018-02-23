@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Filter from './Components/Filter';
 import Aggregate from './Components/Aggregate';
 import Playlist from './Components/Playlist';
+import './App.css';
 
 class App extends Component {
   render() {
