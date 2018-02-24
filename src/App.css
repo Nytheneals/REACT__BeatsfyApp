@@ -1,37 +1,3 @@
-/* .App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-} */
-
-/*
-  Oh Hello!
-  These are some base styles so that our tutorial looks good.
-  Let's go through the important bits real quick
-*/
 :root {
   --yellow: #ffc600;
   --black: #272727;
@@ -44,9 +10,9 @@ html {
   /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; */
   /* font-weight: 900; */
-  font-size: 10px;
+  /* font-size: 10px; */
   color: var(--black);
-  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.07);
+  /* text-shadow: 0 2px 0 rgba(0, 0, 0, 0.07); */
 }
 
 /*
@@ -68,72 +34,4 @@ body {
   margin: 80px 25%;
   /* background: white; */
   background-position: fixed;
-  letter-spacing: -1px;
-  font-size: 25px;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0 0 5px 0;
-}
-/* Each item in our grid will contain numbers */
-.item {
-  /* We center the contents of these items. You can also do this with flexbox too! */
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  border: 2px dotted rgba(0, 0, 0, 0.5);
-  /* font-size: 25px; */
-  text-transform: uppercase;
-  /* background-color: var(--yellow); best colour */
-}
-
-.item p {
-  margin: 0 0 5px 0;
-}
-
-img {
-  width: 100%;
-}
-
-div {
-  border: 2px solid #ffc600;
-}
-
-div {
-  display: grid;
-  place-items: center;
-}
-
-.playlist {
-  display: grid;
-  grid-template-columns: 3fr 1fr 1fr;
-  grid-gap: 20px;
-}
-
-.playlist div ul {
-  display: grid;
-  grid-gap: 20px;
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.input-text {
-  width: 250px;
-  height: 40px;
-  border: 5px solid salmon;
-  border-radius: 10px;
-  font-size: 20px;
-}
-
-button {
-  margin-left: 10px;
-  width: 80px;
-  height: 40px;
-  border: 5px solid rgba(4, 46, 48, 0.651);
-  border-radius: 10px;
-  font-size: 20px;
 }

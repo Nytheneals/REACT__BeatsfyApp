@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 
+const defaultStyle = {
+  color: '#fff',
+};
 // FILTER
 
 class Filter extends Component {
   render() {
     return (
-      <div className="App">
-        <input className="input-text" type="text" name="" id="" />
-        <button type="submit">Filter</button>
+      <div sytle={{ ...defaultStyle }}>
+        <img src="" alt="" />
+        <input type="text" name="" id="" />
       </div>
     );
   }
