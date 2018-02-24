@@ -40,7 +40,7 @@ const fakeServerData = {
         ],
       },
       {
-        name: 'Me Eazi',
+        name: 'Mr. Eazi',
         songs: [
           { name: 'Pour me water ', duration: 3423 },
           { name: 'Leg Over', duration: 3423 },
@@ -99,17 +99,15 @@ class Filter extends Component {
 
 class Playlist extends Component {
   render() {
-    const data = this.props.playlist;
-    console.log(data);
+    const data = this.props.playlists.songs;
+    const mappedData = data.map(songs => songs.name);
+    const mappedSong = mappedData.map((song, i) => <li key={i}>{song}</li>);
+    console.log(mappedSong);
     return (
       <div style={{ ...defaultStyle, width: '25%', display: 'inline-block' }}>
         <img src="" alt="" />
-        <h3> Playlist Name</h3>
-        <ul>
-          <li>song 1</li>
-          <li>song 2</li>
-          <li>song 3</li>
-        </ul>
+        <h3> {this.props.playlists.name}</h3>
+        <ul>{mappedSong}</ul>
       </div>
     );
   }
@@ -130,7 +128,7 @@ class App extends Component {
   componentDidMount() {
     setTimeout(() => {
       this.setState({ serverData: fakeServerData });
-    }, 100);
+    }, 1000);
   }
 
   render() {
@@ -138,17 +136,16 @@ class App extends Component {
       <div className="App">
         {this.state.serverData.user ? (
           <div>
-            <h1 style={{ ...defaultStyle, fontSize: '54px' }}>
+            <h1 style={{ ...defaultStyle, fontSize: '40px' }}>
               {this.state.serverData.user.name}'s Playlist{' '}
               <i className="fa fa-music" aria-hidden="true" />
             </h1>
             <PlaylistCounter playlists={this.state.serverData.user.playlists} />
             <HourCounter playlists={this.state.serverData.user.playlists} />
             <Filter />
-            <Playlist />
-            <Playlist />
-            <Playlist />
-            <Playlist />
+            {this.state.serverData.user.playlists.map(playlist => (
+              <Playlist playlists={playlist} />
+            ))}
           </div>
         ) : (
           <h1>
