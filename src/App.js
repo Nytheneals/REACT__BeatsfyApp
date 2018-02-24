@@ -8,6 +8,24 @@ import './App.css';
 const fakeServerData = {
   user: {
     name: 'Nathane',
+    playlists: [
+      {
+        name: 'Weekly discover',
+        songs: ['Le song ', 'the song', 'Adorn'],
+      },
+      {
+        name: 'Weekly discover',
+        songs: ['Le song ', 'the song', 'Adorn'],
+      },
+      {
+        name: 'Weekly discover',
+        songs: ['Le song ', 'the song', 'Adorn'],
+      },
+      {
+        name: 'Weekly discover',
+        songs: ['Le song ', 'the song', 'Adorn'],
+      },
+    ],
   },
 };
 
@@ -34,9 +52,9 @@ class App extends Component {
         <h4>Music for Wakandans</h4>
         <h4>{this.state.serverData.user && this.state.serverData.user.name}'s Playlist</h4>
         <Aggregate />
-        <Aggregate />
         <Filter />
-        <Playlist />
+        <Playlist playlist={this.state.serverData.user && this.state.serverData.user.playlists} />
+        <h1>Loading....</h1>
       </div>
     );
   }

@@ -6,8 +6,8 @@ class Filter extends Component {
   render() {
     return (
       <div className="App">
-        <input type="text" name="" id="" />
-        :Filter
+        <input className="input-text" type="text" name="" id="" />
+        <button type="submit">Filter</button>
       </div>
     );
   }
