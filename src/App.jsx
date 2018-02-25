@@ -99,10 +99,17 @@ class Filter extends Component {
 
 class Playlist extends Component {
   render() {
+    // LOOPING OVER THE OBJECT
     const data = this.props.playlists.songs;
-    const mappedData = data.map(songs => songs.name);
+    console.table(data);
+
+    // EXTRACTING DATA FROM NAMES FROM DATA
+    const mappedData = data.map((songs, i) => songs.name);
+    console.table(mappedData);
+
     const mappedSong = mappedData.map((song, i) => <li key={i}>{song}</li>);
-    console.log(mappedSong);
+    // console.table(mappedSong);
+
     return (
       <div style={{ ...defaultStyle, width: '25%', display: 'inline-block' }}>
         <img src="" alt="" />
