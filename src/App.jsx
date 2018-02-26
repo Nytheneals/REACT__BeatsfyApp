@@ -110,9 +110,6 @@ class Playlist extends Component {
     const playlist = this.props.playlists;
     // EXTRACTING DATA FROM NAMES FROM DATA
     const mappedSongs = playlist.songs.map((song, i) => <li key={i}>{song.name}</li>);
-    console.log(mappedSongs);
-    // console.table(mappedSong);
-
     return (
       <div style={{ ...defaultStyle, width: '25%', display: 'inline-block' }}>
         <img src="" alt="" />
@@ -147,6 +144,10 @@ class App extends Component {
   }
 
   render() {
+    const playlistToRender = this.state.serverData.user
+      ? this.state.serverData.user.playlists.filter(playlist =>
+        playlist.name.toLowerCase().includes(this.state.filterString.toLowerCase()))
+      : [];
     return (
       <div className="App">
         {this.state.serverData.user ? (
@@ -155,17 +156,14 @@ class App extends Component {
               {this.state.serverData.user.name}'s Playlist{' '}
               <i className="fa fa-music" aria-hidden="true" />
             </h1>
-            <PlaylistCounter playlists={this.state.serverData.user.playlists} />
-            <HourCounter playlists={this.state.serverData.user.playlists} />
+            <PlaylistCounter playlists={playlistToRender} />
+            <HourCounter playlists={playlistToRender} />
             <Filter
               onTextChange={(text) => {
                 this.setState({ filterString: text });
               }}
             />
-            {this.state.serverData.user.playlists
-              .filter(playlist =>
-                playlist.name.toLowerCase().includes(this.state.filterString.toLowerCase()))
-              .map((playlist, i) => <Playlist key={i} playlists={playlist} />)}
+            {playlistToRender.map((playlist, i) => <Playlist key={i} playlists={playlist} />)}
           </div>
         ) : (
           <h1>
