@@ -71,6 +71,7 @@ class HourCounter extends Component {
       (songs, eachPlaylist) => songs.concat(eachPlaylist.songs),
       [],
     );
+
     const totalDuration = allSongs.reduce((sum, eachSong) => sum + eachSong.duration, 0);
     // const totalDuration = 78;
 
@@ -99,22 +100,17 @@ class Filter extends Component {
 
 class Playlist extends Component {
   render() {
-    // LOOPING OVER THE OBJECT
-    const data = this.props.playlists.songs;
-    console.table(data);
-
+    const playlist = this.props.playlists;
     // EXTRACTING DATA FROM NAMES FROM DATA
-    const mappedData = data.map((songs, i) => songs.name);
-    console.table(mappedData);
-
-    const mappedSong = mappedData.map((song, i) => <li key={i}>{song}</li>);
+    const mappedSongs = playlist.songs.map((song, i) => <li key={i}>{song.name}</li>);
+    console.log(mappedSongs);
     // console.table(mappedSong);
 
     return (
       <div style={{ ...defaultStyle, width: '25%', display: 'inline-block' }}>
         <img src="" alt="" />
-        <h3> {this.props.playlists.name}</h3>
-        <ul>{mappedSong}</ul>
+        <h3> {playlist.name}</h3>
+        <ul>{mappedSongs}</ul>
       </div>
     );
   }
@@ -150,8 +146,8 @@ class App extends Component {
             <PlaylistCounter playlists={this.state.serverData.user.playlists} />
             <HourCounter playlists={this.state.serverData.user.playlists} />
             <Filter />
-            {this.state.serverData.user.playlists.map(playlist => (
-              <Playlist playlists={playlist} />
+            {this.state.serverData.user.playlists.map((playlist, i) => (
+              <Playlist key={i} playlists={playlist} />
             ))}
           </div>
         ) : (
