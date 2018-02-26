@@ -90,7 +90,14 @@ class Filter extends Component {
     return (
       <div sytle={{ ...defaultStyle }}>
         <img src="" alt="" />
-        <input type="text" name="" id="" />
+        <input
+          type="text"
+          name=""
+          id=""
+          onChange={(e) => {
+            this.props.onTextChange(e.target.value);
+          }}
+        />
       </div>
     );
   }
@@ -123,6 +130,7 @@ class App extends Component {
     super();
     this.state = {
       serverData: {},
+      filterString: '',
     };
   }
 
@@ -131,6 +139,10 @@ class App extends Component {
   componentDidMount() {
     setTimeout(() => {
       this.setState({ serverData: fakeServerData });
+    }, 500);
+    // FILTER
+    setTimeout(() => {
+      this.setState({ filterString: '' });
     }, 1000);
   }
 
@@ -145,10 +157,15 @@ class App extends Component {
             </h1>
             <PlaylistCounter playlists={this.state.serverData.user.playlists} />
             <HourCounter playlists={this.state.serverData.user.playlists} />
-            <Filter />
-            {this.state.serverData.user.playlists.map((playlist, i) => (
-              <Playlist key={i} playlists={playlist} />
-            ))}
+            <Filter
+              onTextChange={(text) => {
+                this.setState({ filterString: text });
+              }}
+            />
+            {this.state.serverData.user.playlists
+              .filter(playlist =>
+                playlist.name.toLowerCase().includes(this.state.filterString.toLowerCase()))
+              .map((playlist, i) => <Playlist key={i} playlists={playlist} />)}
           </div>
         ) : (
           <h1>
